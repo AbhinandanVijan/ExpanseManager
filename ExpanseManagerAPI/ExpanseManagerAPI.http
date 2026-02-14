@@ -1,0 +1,6 @@
+@ExpanseManagerAPI_HostAddress = http://localhost:5198
+
+GET {{ExpanseManagerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
