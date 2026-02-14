@@ -2,6 +2,10 @@ using ExpanseManagerAPI.Data.Repositories;
 using ExpanseManagerAPI.Interfaces.Repositories;
 using ExpanseManagerAPI.Interfaces.Services;
 using ExpanseManagerAPI.Services;
+using ExpanseManagerAPI.Security;
+using ExpanseManagerAPI.Interfaces.Security;
+using ExpanseManagerAPI.Interfaces.Providers;
+using ExpanseManagerAPI.Providers;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -16,6 +20,17 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IBankAccountRepository, BankAccountRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+builder.Services.AddScoped<IBankConnectionService, BankConnectionService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
+builder.Services.AddScoped<IBankConnectionRepository, BankConnectionRepository>();
+builder.Services.AddScoped<IBankAccountRepository, BankAccountRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+builder.Services.AddScoped<IBankDataProviderClient, PlaidBankDataProviderClient>();
+builder.Services.AddScoped<ITokenEncryptionService, AesTokenEncryptionService>();
+
 
 var app = builder.Build();
 
